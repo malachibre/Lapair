@@ -1,4 +1,6 @@
 import React from "react";
+import Signup from "./Signup.js";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import qMark from "./q-mark.svg";
 import books from "./books.svg";
 import grad from "./grad-cap.svg";
@@ -51,7 +53,7 @@ const WelcomeSide2 = () => {
 };
 
 const WelcomeNavBox = props => {
-  let nav_svg = null;
+  let nav_svg;
   if (props.text === "About") {
     nav_svg = qMark;
   } else if (props.text === "Student") {
@@ -85,11 +87,15 @@ const SignUpBox = () => {
         <label className="sign_up_label">Username:</label>
         <SignUpInput />
         <label className="sign_up_label">Password: </label>
-        <SignUpInput />
+        <SignUpInput name="pass" />
         <br />
         <input id="sign_up_submit" type="submit" value="Login" />
         <br />
-        <a href="signup">Don't Have an Account? Sign up</a>
+        <Router>
+          <Link to="/singup">Don't Have an Account? Sign up</Link>
+
+          <Route path="/singup" component={Signup} exact={true} />
+        </Router>
       </form>
     </div>
   );
@@ -98,11 +104,14 @@ const SignUpBox = () => {
 class SignUpInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+
+    this.props = props;
   }
 
   render() {
-    return <input className="sign_up_input"></input>;
+    if (this.props.type === "pass")
+      return <input type="password" className="sign_up_input"></input>;
+    else return <input className="sign_up_input"></input>;
   }
 }
 

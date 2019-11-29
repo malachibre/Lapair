@@ -37,8 +37,8 @@
   flex-direction: column;
   background-image: linear-gradient(
     to bottom,
-    rgba(53, 155, 168, 1),
-    rgba(100, 100, 100, 0)
+    rgba(53, 155, 168, 0.75),
+    rgba(100, 100, 100, 0.25)
   );
 }
 
@@ -69,8 +69,9 @@
   width: 50%;
   height: 50%;
   border-radius: 10%;
-  background-color: rgba(51, 236, 97);
+  background-color: rgba(51, 236, 97, 1);
   display: flex;
+
   align-items: center;
   justify-content: center;
 }
